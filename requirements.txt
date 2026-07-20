@@ -7,4 +7,4 @@ pyvista
 trimesh
 
 # Optional: CRF refinement (--refine crf)
-# pygco
+# gco-wrapper
