@@ -602,8 +602,9 @@ def main():
     p.add_argument("--zoom", type=float, default=1.3,
                    help="Zoom-in factor (> 1 moves the camera closer)")
     p.add_argument("--output_dir", default="./results")
-    p.add_argument("--instance_policy", choices=["top1", "all", "score"], default="score")
-    p.add_argument("--score_thresh", type=float, default=0.5,
+    p.add_argument("--instance_policy", choices=["top1", "all", "score"], default="top1",
+                   help="SAM3 instance selection (paper results use top1)")
+    p.add_argument("--score_thresh", type=float, default=0.7,
                    help="Confidence threshold tau for --instance_policy score")
     p.add_argument("--refine", choices=["none", "smooth", "crf"], default="none",
                    help="Optional post-hoc label refinement (paper results use none)")
