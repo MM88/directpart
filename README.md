@@ -50,27 +50,6 @@ Expected layout:
 <part_root>/<synset_id>/expert_verified/points_label/<model_id>.seg
 ```
 
-## Reproducing the paper results
-
-The headline results (mIoU 68.5, medIoU 73.6, accuracy 83.1, macro-averaged over the 16 categories) use 42 views (icosphere subdivision level 1), 512×512 renders, zoom 1.3, instance policy `score` with τ = 0.5, prompt variant B, no texture and no refinement — i.e. the defaults. Run one category:
-
-```bash
-python directpart.py \
-    --category 03001627 \
-    --core_root /path/to/ShapeNetCore \
-    --part_root /path/to/PartAnnotation \
-    --test_split_file /path/to/shuffled_test_file_list.json \
-    --sam3_checkpoint /path/to/sam3.pt \
-    --output_dir ./results
-```
-
-Repeat for all 16 synset IDs (listed in `CATEGORY_NAMES` in `directpart.py`) and macro-average the per-category means. Each run writes to `<output_dir>/<synset_id>/`:
-
-- `results_final.txt` / `results_final.json` — per-category and per-model metrics
-- `pointclouds/<model_id>/prediction.ply` and `ground_truth.ply` — colored point clouds for inspection
-
-Runs are resumable: interrupted runs restart from the last checkpoint automatically.
-
 ### Main options
 
 | Option | Default | Description |
