@@ -2,7 +2,7 @@
 
   - smooth : vote diffusion on a spatial kNN graph (numpy/scipy only)
   - crf    : multi-label graph cut, Potts or per-category compatibility
-             matrix (requires pygco)
+             matrix (requires gco-wrapper)
 
 Both operate on the existing votes only: points with no votes keep label -1,
 so coverage is unchanged and refine on/off comparisons are apples-to-apples
@@ -74,8 +74,11 @@ def refine_smooth(points, votes, tree=None, k=8, sigma=None, alpha=0.5, n_iter=1
 
 
 def refine_crf(points, votes, tree=None, k=8, sigma=None, lam=1.0, compat=None):
-    """Graph cut: unary = -log(votes), pairwise = Potts (compat=None) or a C x C matrix."""
-    import pygco
+    """Graph cut: unary = -log(votes), pairwise = Potts (compat=None) or a C x C matrix.
+
+    Requires the gco-wrapper package (imported as gco).
+    """
+    import gco
     if tree is None:
         tree = cKDTree(points)
     dists, idx = _knn_graph(points, tree, k)
@@ -91,8 +94,8 @@ def refine_crf(points, votes, tree=None, k=8, sigma=None, lam=1.0, compat=None):
     P = votes / (votes.sum(axis=1, keepdims=True) + 1e-12)
     unary = (-np.log(P + 1e-6)).astype(np.float64)            # N x C
     pairwise = (1.0 - np.eye(C)) if compat is None else np.asarray(compat, dtype=float)
-    out = pygco.cut_general_graph(edges, edge_w, unary,
-                                  pairwise.astype(np.float64), algorithm='expansion')
+    out = gco.cut_general_graph(edges, edge_w, unary,
+                                pairwise.astype(np.float64), algorithm='expansion')
     return np.asarray(out)
 
 
