@@ -4,9 +4,6 @@ Zero-shot, training-free 3D part segmentation on ShapeNetPart.
 
 DirectPart segments 3D shapes into semantic parts without any training or fine-tuning. Each mesh is rendered from viewpoints uniformly sampled on an icosphere, every rendered view is segmented with text-prompted [SAM3](https://github.com/facebookresearch/sam3), and the resulting 2D masks are back-projected onto the annotated point cloud through the depth buffer. Per-point labels are assigned by majority vote across views.
 
-This repository contains the code to reproduce the results of the paper:
-
-> *[Paper title]*, Array, 2026. [DOI/link]
 
 ## Repository contents
 
