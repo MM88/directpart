@@ -56,7 +56,7 @@ Expected layout:
 |---|---|---|
 | `--subdivision` | 1 | Icosphere subdivision: 0 = 12 views, 1 = 42, 2 = 162 |
 | `--zoom` | 1.3 | Zoom-in factor (> 1 moves the camera closer) |
-| `--instance_policy` | `score` | SAM3 instance selection: `top1`, `all`, or `score` (threshold `--score_thresh`) |
+| `--instance_policy` | `top1` | SAM3 instance selection: `top1`, `all`, or `score` (threshold `--score_thresh`) |
 | `--prompt_variant` | `B` | Prompt formulation: `A` bare part, `B` category + part, `C` full phrase |
 | `--use_texture` | off | Render with mesh textures baked into vertex colors |
 | `--refine` | `none` | Post-hoc refinement: `none`, `smooth`, or `crf` |
