@@ -65,8 +65,4 @@ Expected layout:
 
 [MIT / to be confirmed]
 
-## Citation
 
-```bibtex
-[BibTeX entry once available]
-```
