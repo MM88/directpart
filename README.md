@@ -8,7 +8,7 @@ DirectPart segments 3D shapes into semantic parts without any training or fine-t
 ## Repository contents
 
 - `directpart.py` — full pipeline: rendering, SAM3 segmentation, back-projection, evaluation
-- `refine.py` — optional post-hoc label refinement (kNN smoothing or CRF); the paper's headline results use no refinement
+- `refine.py` — optional post-hoc label refinement (kNN smoothing or CRF)
 - `texture_loader.py` — optional textured rendering (`--use_texture`), baking mesh textures into vertex colors
 
 ## Installation
