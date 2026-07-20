@@ -1,0 +1,10 @@
+# Core dependencies (PyTorch is installed with SAM3, see README)
+numpy
+scipy
+matplotlib
+pillow
+pyvista
+trimesh
+
+# Optional: CRF refinement (--refine crf)
+# pygco
